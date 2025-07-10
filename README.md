@@ -1,0 +1,2 @@
+# TOP_SQL_50-LEETCODE-CHALLENGE
+It's Top 50 challenge of SQL LEETCODE.
