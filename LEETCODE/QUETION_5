@@ -1,0 +1,41 @@
+QUETION LINK :- https://leetcode.com/problems/article-views-i/description/?envType=study-plan-v2&envId=top-sql-50
+
+-- LEETCODE QUETION NO. :- 1148. Article Views I
+
+
+Example 1:Write a solution to find all the authors that viewed at least one of their own articles.
+Return the result table sorted by id in ascending order.
+
+Input: 
+Views table:
++------------+-----------+-----------+------------+
+| article_id | author_id | viewer_id | view_date  |
++------------+-----------+-----------+------------+
+| 1          | 3         | 5         | 2019-08-01 |
+| 1          | 3         | 6         | 2019-08-02 |
+| 2          | 7         | 7         | 2019-08-01 |
+| 2          | 7         | 6         | 2019-08-02 |
+| 4          | 7         | 1         | 2019-07-22 |
+| 3          | 4         | 4         | 2019-07-21 |
+| 3          | 4         | 4         | 2019-07-21 |
++------------+-----------+-----------+------------+
+EXPECTED Output: 
++------+
+| id   |
++------+
+| 4    |
+| 7    |
++------+
+
+
+-- QUERY :- 
+
+SELECT distinct author_id AS id FROM views
+WHERE author_id = viewer_id
+order by author_id;
+
+OUTPUT :- 
+| id |
+| -- |
+| 4  |
+| 7  |
