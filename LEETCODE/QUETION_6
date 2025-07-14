@@ -1,0 +1,49 @@
+QUETION LINK :- https://leetcode.com/problems/employee-bonus/description/?envType=study-plan-v2&envId=top-sql-50
+
+-- LEETCODE QUETION NO. :- 577. Employee Bonus
+
+
+Example 1:Write a solution to report the name and bonus amount of each employee with a bonus less than 1000.
+
+Input: 
+Employee table:
++-------+--------+------------+--------+
+| empId | name   | supervisor | salary |
++-------+--------+------------+--------+
+| 3     | Brad   | null       | 4000   |
+| 1     | John   | 3          | 1000   |
+| 2     | Dan    | 3          | 2000   |
+| 4     | Thomas | 3          | 4000   |
++-------+--------+------------+--------+
+Bonus table:
++-------+-------+
+| empId | bonus |
++-------+-------+
+| 2     | 500   |
+| 4     | 2000  |
++-------+-------+
+
+EXPECTED Output: 
++------+-------+
+| name | bonus |
++------+-------+
+| Brad | null  |
+| John | null  |
+| Dan  | 500   |
++------+-------+
+
+
+-- QUERY :- 
+
+SELECT e.name,b.bonus FROM employee e
+LEFT JOIN bonus b ON e.empid = b.empid
+WHERE b.bonus <1000 OR bonus IS NULL;
+
+-- OUTPUT:- 
++------+-------+
+| name | bonus |
++------+-------+
+| Brad | null  |
+| John | null  |
+| Dan  | 500   |
++------+-------+
