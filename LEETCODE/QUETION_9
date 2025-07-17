@@ -1,0 +1,47 @@
+QUETION LINK :- https://leetcode.com/problems/rising-temperature/description/?envType=study-plan-v2&envId=top-sql-50
+
+-- LEETCODE QUETION NO. :- 197. Rising Temperature
+
+
+Example 1:Write a solution to find all dates' id with higher temperatures compared to its previous dates (yesterday).
+Return the result table in any order.
+
+Input: 
+Weather table:
++----+------------+-------------+
+| id | recordDate | temperature |
++----+------------+-------------+
+| 1  | 2015-01-01 | 10          |
+| 2  | 2015-01-02 | 25          |
+| 3  | 2015-01-03 | 20          |
+| 4  | 2015-01-04 | 30          |
++----+------------+-------------+
+EXPECTED Output: 
++----+
+| id |
++----+
+| 2  |
+| 4  |
++----+
+
+Explanation: 
+In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
+In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
+
+
+-- QUERY :- 
+
+SELECT today.id
+FROM Weather yesterday 
+CROSS JOIN Weather today
+WHERE DATEDIFF(today.recordDate,yesterday.recordDate) = 1
+    AND today.temperature > yesterday.temperature;
+
+
+-- OUTPUT:- 
++----+
+| id |
++----+
+| 2  |
+| 4  |
++----+
