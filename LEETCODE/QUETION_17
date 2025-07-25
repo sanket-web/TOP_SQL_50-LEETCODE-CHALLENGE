@@ -1,0 +1,37 @@
+QUETION LINK :- https://leetcode.com/problems/triangle-judgement/description/?envType=study-plan-v2&envId=top-sql-50
+
+-- LEETCODE QUETION NO. :- 610. Triangle Judgement
+
+
+Example 1: Report for every three line segments whether they can form a triangle.
+           Return the result table in any order.
+Input: 
+Triangle table:
++----+----+----+
+| x  | y  | z  |
++----+----+----+
+| 13 | 15 | 30 |
+| 10 | 20 | 15 |
++----+----+----+
+EXPECTED Output: 
++----+----+----+----------+
+| x  | y  | z  | triangle |
++----+----+----+----------+
+| 13 | 15 | 30 | No       |
+| 10 | 20 | 15 | Yes      |
++----+----+----+----------+
+
+
+-- QUERY :- 
+
+SELECT *,
+IF(x+y>z && x+z>y && z+y>x, "Yes","No") AS triangle
+FROM triangle;
+
+Output: 
++----+----+----+----------+
+| x  | y  | z  | triangle |
++----+----+----+----------+
+| 13 | 15 | 30 | No       |
+| 10 | 20 | 15 | Yes      |
++----+----+----+----------+
