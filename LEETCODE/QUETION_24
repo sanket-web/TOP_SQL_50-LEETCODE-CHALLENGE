@@ -1,0 +1,47 @@
+QUETION LINK :- https://leetcode.com/problems/last-person-to-fit-in-the-bus/description/?envType=study-plan-v2&envId=top-sql-50
+
+-- LEETCODE QUETION NO. :- 1204. Last Person to Fit in the Bus
+
+
+Example 1: Write a solution to find the person_name of the last person that can fit on the bus without exceeding the weight limit. 
+           The test cases are generated such that the first person does not exceed the weight limit.
+
+
+Input: 
+Queue table:
++-----------+-------------+--------+------+
+| person_id | person_name | weight | turn |
++-----------+-------------+--------+------+
+| 5         | Alice       | 250    | 1    |
+| 4         | Bob         | 175    | 5    |
+| 3         | Alex        | 350    | 2    |
+| 6         | John Cena   | 400    | 3    |
+| 1         | Winston     | 500    | 6    |
+| 2         | Marie       | 200    | 4    |
++-----------+-------------+--------+------+
+EXPECTED Output: 
++-------------+
+| person_name |
++-------------+
+| John Cena   |
++-------------+
+
+Explanation: The folowing table is ordered by the turn for simplicity.
+
+
+-- QUERY :- 
+
+SELECT 
+    q1.person_name
+FROM Queue q1 JOIN Queue q2 ON q1.turn >= q2.turn
+GROUP BY q1.turn
+HAVING SUM(q2.weight) <= 1000
+ORDER BY SUM(q2.weight) DESC
+LIMIT 1
+
+Output: 
++-------------+
+| person_name |
++-------------+
+| John Cena   |
++-------------+
