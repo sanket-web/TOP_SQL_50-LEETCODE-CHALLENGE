@@ -1,0 +1,42 @@
+QUETION LINK :- https://leetcode.com/problems/delete-duplicate-emails/description/?envType=study-plan-v2&envId=top-sql-50
+
+-- LEETCODE QUETION NO. :- 196. Delete Duplicate Emails
+
+
+Example 1: Write a solution to delete all duplicate emails, keeping only one unique email with the smallest id.
+
+
+Input: 
+Person table:
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+
+
+EXPECTED Output: 
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
+
+Explanation: john@example.com is repeated two times. We keep the row with the smallest Id = 1.
+
+
+-- QUERY :- 
+
+DELETE p1 FROM Person p1
+JOIN Person p2 
+ON p1.email = p2.email AND p1.id > p2.id;
+
+Output: 
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
